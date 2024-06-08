@@ -1,0 +1,15 @@
+[Unit]
+Description=quotelly bot
+After=syslog.target
+After=network.target
+[Service]
+EnvironmentFile=/home/properties/quotellybot.txt
+Type=simple
+User=root
+WorkingDirectory=/home/bots/quotelly_bot/
+ExecStart=python3 /home/bots/quotelly_bot/quotellybot.py
+Restart=always
+StandardOutput=append:/var/log/quotellybot/quotellybot.log
+StandardError=inherit
+[Install]
+WantedBy=multi-user.target
